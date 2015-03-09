@@ -1,4 +1,7 @@
 // g++ -std=c++11 problem1.cpp && ./a.exe 
+// output:
+// result (N=10):   23
+// result (N=1000): 233168
 
 #include <iostream>
 
