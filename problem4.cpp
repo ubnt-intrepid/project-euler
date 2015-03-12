@@ -5,6 +5,9 @@
 // License:  MIT License
 // Created:  2015-03-12T23:34:22
 
+// output:
+// 906609 = 993 x 913.
+
 #include <algorithm>
 #include <iostream>
 #include <vector>
@@ -14,15 +17,13 @@ using namespace std;
 
 bool is_palindrome(int value, int base = 10)
 {
+    auto digit = [=](int d){ return (value / (int)(pow(base, d))) % base; };
+
     int n = 1;
     for (int tmp = value; tmp / base > 0; tmp /= base, ++n);
 
-    auto digit_value = [=](int digit) {
-        return (value / static_cast<int>(pow(base, digit))) % base;
-    };
-
     for (int i = 0; i < n/2; ++i) {
-        if (digit_value(i) != digit_value(n - 1 - i))
+        if (digit(i) != digit(n - 1 - i))
             return false;
     }
     return true;
