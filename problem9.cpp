@@ -25,7 +25,7 @@ int main(int argc, char** argv)
     for (int b = a + 1; b < N - 1; ++b)
     {
         long c = N - (a + b);    // a + b + c = 1000
-        if (a*a + b*b == c*c)
+        if (c > b && a*a + b*b == c*c)
         {
             cout << "(a,b,c) = (" << a << "," << b << "," << c << ")\n";
             cout << "abc = " << a*b*c << endl;
