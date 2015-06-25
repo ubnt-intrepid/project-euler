@@ -6,7 +6,7 @@
 // Created:  2015-03-12T23:34:22
 
 // output:
-// 906609 = 993 x 913.
+// 906609 = 913 x 993.
 
 #include <algorithm>
 #include <iostream>
@@ -19,8 +19,7 @@ bool is_palindrome(int value, int base = 10)
 {
     auto digit = [=](int d){ return (value / (int)(pow(base, d))) % base; };
 
-    int n = 1;
-    for (int tmp = value; tmp / base > 0; tmp /= base, ++n);
+    int n = (int)(log(value) / log(base)) + 1;
 
     for (int i = 0; i < n/2; ++i) {
         if (digit(i) != digit(n - 1 - i))
@@ -34,7 +33,7 @@ int main(int argc, char** argv)
     pair<int, int> p;
 
     for (int i = 999; i > 99; --i)
-    for (int j = 999; j > 99; --j)
+    for (int j = 999; j > i;  --j)
     {
         if (is_palindrome(i * j) && p.first * p.second < i * j)
             p = make_pair(i, j);
@@ -42,4 +41,3 @@ int main(int argc, char** argv)
 
     cout << p.first * p.second << " = " << p.first << " x " << p.second << ".\n";
 }
-
