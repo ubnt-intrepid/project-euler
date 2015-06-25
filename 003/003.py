@@ -15,8 +15,8 @@ def factorize(N):
         while d == 1:
             x = random.randint(1, N)
             y = random.randint(1, N)
-            xy = int(abs(x-y))
-            d = int(gcd(xy, N))
+            d = gcd(abs(x-y), N)
+            d = int(d)
         if d < N:
             factors.append(d)
             N /= d
