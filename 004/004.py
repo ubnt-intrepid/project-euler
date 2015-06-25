@@ -1,19 +1,11 @@
-def num_of_digits(val, base):
-    " 基数 base のもとでの桁数 "
-    n = 1
-    while int(val / base) > 0:
-        val /= base 
-        n += 1
-    return n
-
+from math import log, ceil 
 
 def isPalindrome(val, base=10):
     def digit(d):
-        ' d 桁目の数字 '
-        return int(val / (base**d)) % base 
+        return int(val / (base**d))%base
 
-    n = num_of_digits(val, base)
-    return all(digit(i) == digit(n - 1 - i) for i in range(int(n / 2)))
+    n = ceil(log(val, base))
+    return all(digit(i) == digit(n-1-i) for i in range(int(n / 2)))
 
 
 p1, p2 = 0, 0
